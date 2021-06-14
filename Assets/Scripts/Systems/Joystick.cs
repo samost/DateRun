@@ -8,8 +8,7 @@ namespace Systems
 
 
         private Vector2 direction;
-        [HideInInspector] public static float force;
-    
+
         [HideInInspector] public static bool tap = false;
         [HideInInspector] public static Vector3 MoveDirection;
 
@@ -30,7 +29,6 @@ namespace Systems
                         break;
                     case TouchPhase.Moved:
                         direction = touch.position - startPos;
-                        force = Vector2.Distance(touch.position, startPos);
                         break;
                     case TouchPhase.Ended:
                         direction = Vector2.zero;

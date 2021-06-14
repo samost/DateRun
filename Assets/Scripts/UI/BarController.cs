@@ -14,6 +14,8 @@ public class BarController : MonoBehaviour
         Instance = this;
     }
 
+    
+
     public void Buff()
     {
         MoveBar(zones[currentStateBar], true);
@@ -23,10 +25,10 @@ public class BarController : MonoBehaviour
 
     public void DeBuff()
     {
-
+        currentStateBar = currentStateBar - 1 < 0 ? 0 : --currentStateBar;
         MoveBar(zones[currentStateBar], false);
         
-        currentStateBar = currentStateBar - 1 < 0 ? 0 : --currentStateBar;
+        
     }
     
     private void MoveBar(RectTransform zone, bool direcrtion)
@@ -41,9 +43,5 @@ public class BarController : MonoBehaviour
             zone.DOAnchorMax(new Vector2(0f, 0.5f), 1f);
         }
     }
-
-    private void Update()
-    {
-        Debug.Log(currentStateBar);
-    }
+    
 }

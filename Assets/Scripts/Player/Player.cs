@@ -25,10 +25,16 @@ namespace Player
                 Quaternion lookRotation =
                     Joystick.MoveDirection != Vector3.zero ? Quaternion.LookRotation(Joystick.MoveDirection) : transform.rotation;
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * SpeedRotation);
+                
+                AnimatorManager.Instance.SetGirlAnimation(TypeAnimation.Walk, true);
+                AnimatorManager.Instance.SetManAnimation(TypeAnimation.Walk, true);
             }
             else
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0,0), Time.deltaTime * SpeedRotation);
+                
+                AnimatorManager.Instance.SetGirlAnimation(TypeAnimation.Walk, false);
+                AnimatorManager.Instance.SetManAnimation(TypeAnimation.Walk, false);
             }
         }
 
@@ -41,7 +47,7 @@ namespace Player
             }
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             Move();
         }
